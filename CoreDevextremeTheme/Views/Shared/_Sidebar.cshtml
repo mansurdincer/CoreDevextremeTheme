@@ -1,0 +1,250 @@
+﻿<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="margin-top:0px; position: fixed; overflow-y: auto;">
+    <!-- Brand Logo -->
+    <a href="~/Home" class="brand-link">
+        <img src="~/img/logo-filidea.png" alt="Filidea Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Filidea Work Space</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Mansur Dinçer</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        @*dynamic menu code*@
+        @*@Html.Raw(ViewBag.MenuHtml)*@
+
+        @{
+            var currentControllerValue = ViewContext.RouteData.Values["Controller"];
+            string currentController = currentControllerValue != null ? currentControllerValue.ToString() : string.Empty;
+        }
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+               
+                <li class="nav-item has-treeview @((currentController.ToString() == "MaintenanceForms" ||
+                                                    currentController.ToString() == "FaultReports" ||
+                                                    currentController.ToString() == "MachineHourLogs" ||
+                                                    currentController.ToString() == "Maintenances" ||
+                                                    currentController.ToString() == "MaintenancePlans" ) ?
+                                                    "menu-open" : "")">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-wrench"></i>
+                        <p>
+                            Bakım & Onarım
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/MaintenanceForms" class="nav-link @(currentController.ToString() == "MaintenanceForms" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Bakım Formları
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="~/FaultReports" class="nav-link @(currentController.ToString() == "FaultReports" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Arıza Bildirimi
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="~/Maintenances" class="nav-link @(currentController.ToString() == "Maintenances" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Bakım Listesi
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="~/MachineHourLogs" class="nav-link @(currentController.ToString() == "MachineHourLogs" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Güncel Çalışma Saatleri</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="~/MaintenancePlans" class="nav-link @(currentController.ToString() == "MaintenancePlans" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Bakım Planı</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                                
+                <li class="nav-item has-treeview @((currentController.ToString() == "EquipmentCategories" ||
+                                                    currentController.ToString() == "EquipmentTypes" ||
+                                                    currentController.ToString() == "EquipmentBrands" ||
+                                                    currentController.ToString() == "EquipmentModels" ||
+                                                    currentController.ToString() == "Equipments" ) ?
+                                                    "menu-open" : "")">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-laptop"></i>
+                        <p>
+                            Varlıklar
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/EquipmentCategories" class="nav-link @(currentController.ToString() == "EquipmentCategories" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Kategoriler</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/EquipmentTypes" class="nav-link @(currentController.ToString() == "EquipmentTypes" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ekipman Tipleri</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/EquipmentBrands" class="nav-link @(currentController.ToString() == "EquipmentBrands" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Markalar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/EquipmentModels" class="nav-link @(currentController.ToString() == "EquipmentModels" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Modeller</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/Equipments" class="nav-link @(currentController.ToString() == "Equipments" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ekipmanlar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/EquipmentTypePeriods" class="nav-link @(currentController.ToString() == "EquipmentTypePeriods" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ekipman Tip Period</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview @((currentController.ToString() == "Departments" ||
+                                                    currentController.ToString() == "JobTitles" ||
+                                                    currentController.ToString() == "Employees") ?
+                                                    "menu-open" : "")">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>
+                            Organizasyon
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/Departments" class="nav-link @(currentController.ToString() == "Departments" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Departmanlar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/JobTitles" class="nav-link @(currentController.ToString() == "JobTitles" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ünvanlar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/Employees" class="nav-link @(currentController.ToString() == "Employees" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Personeller</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-treeview @((currentController.ToString() == "TicketCategories" ||
+                                                    currentController.ToString() == "Tickets" ) ?
+                                                    "menu-open" : "")">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-headphones"></i>
+                        <p>
+                            Destek
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/TicketCategories" class="nav-link @(currentController.ToString() == "TicketCategories" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Destek Kategorileri</p>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="~/Tickets" class="nav-link @(currentController.ToString() == "Tickets" ? "active" : "")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Destek Talepleri</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview @((currentController.ToString() == "DeletedEntityLogs" ||
+                                                    currentController.ToString() == "Roles" ) ?
+                                                    "menu-open" : "")">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Ayarlar
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="~/DeletedEntityLogs" class="nav-link @(currentController.ToString() == "DeletedEntityLogs" ? "active" : "")">
+                                <i class="fa fa-recycle nav-icon"></i>
+                                <p>Geri Dönüşüm Kutusu</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/Roles" class="nav-link @(currentController.ToString() == "Roles" ? "active" : "")">
+                                <i class="fa fa-users nav-icon"></i>
+                                <p>Roller</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

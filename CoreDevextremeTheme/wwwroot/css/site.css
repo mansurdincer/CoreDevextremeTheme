@@ -1,0 +1,43 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.maintenance-period-73FE3DB1-C093-44BD-B4A3-92540F31578F {
+    background-color: #FDFDC0; /* Açýk sarý */
+}
+
+.maintenance-period-A34D56FB-FEDA-4956-A483-E22F33123B7E {
+    background-color: #FDFD96; /* Orta sarý */
+}
+
+.maintenance-period-A14FFAF6-6F3C-457E-8C05-885613122D7D {
+    background-color: #FFE066; /* Açýk turuncu */
+}
+
+.maintenance-period-19142146-4619-4F7B-87DF-50F54E234F81 {
+    background-color: #FFB74D; /* Orta turuncu */
+}
+
+.maintenance-period-3E0EA42E-041A-45F0-A17E-0F4ACD4230FD {
+    background-color: #FF8A65; /* Koyu turuncu */
+}
+

@@ -1,0 +1,5 @@
+﻿Role Management in ASP.NET Core Identity
+https://www.yogihosting.com/aspnet-core-identity-roles/
+
+Devexpress ASP.NET Core Reporting
+https://docs.devexpress.com/XtraReports/401763/web-reporting/asp-net-core-reporting/end-user-report-designer-in-asp-net-applications/quick-start/add-an-end-user-report-designer-to-an-aspnet-core-application

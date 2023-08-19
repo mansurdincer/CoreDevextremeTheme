@@ -1,0 +1,36 @@
+﻿global using AspNetCoreHero.ToastNotification;
+global using AspNetCoreHero.ToastNotification.Abstractions;
+global using AspNetCoreHero.ToastNotification.Extensions;
+global using AutoMapper;
+global using CoreDevextremeTheme.Data;
+global using CoreDevextremeTheme.Enums;
+global using CoreDevextremeTheme.Extensions;
+global using CoreDevextremeTheme.Models.Common;
+global using CoreDevextremeTheme.Models.Identity;
+global using CoreDevextremeTheme.Models.Organization;
+global using CoreDevextremeTheme.Models.Settings;
+global using CoreDevextremeTheme.Services;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Identity.UI.Services;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Rendering;
+global using Microsoft.CodeAnalysis;
+global using Microsoft.Data.SqlClient;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Hosting;
+global using Newtonsoft.Json;
+global using Pluralize.NET;
+global using System;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Diagnostics;
+global using System.Globalization;
+global using System.Security.Claims;
+global using System.Threading;
+
+

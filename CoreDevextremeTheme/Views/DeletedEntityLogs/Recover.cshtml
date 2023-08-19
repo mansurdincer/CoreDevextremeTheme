@@ -1,0 +1,56 @@
+﻿@model CoreDevextremeTheme.Models.Common.DeletedEntityLog
+
+@{
+    ViewData["Title"] = "Recover";
+}
+
+<h1>Geri yükle</h1>
+
+<h3>Bu kaydı geri yüklemek istediğinizden emin misiniz?</h3>
+<div>    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EntityId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EntityId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EntityName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EntityName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EntityJson)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EntityJson)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DeletedById)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DeletedById)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DeletedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DeletedAt)
+        </dd>
+    </dl>
+    
+    <form asp-action="Recover">
+        <input type="hidden" asp-for="Id" />        
+
+        <button type="submit" value="Recover" class="btn btn-outline-success rounded-1">
+            <i class="fas fa-recycle"></i>
+        </button>
+
+        <a asp-action="Index" class="btn btn-outline-secondary rounded-1">
+            <i class="fas fa-list"></i>
+        </a>
+    </form>
+</div>

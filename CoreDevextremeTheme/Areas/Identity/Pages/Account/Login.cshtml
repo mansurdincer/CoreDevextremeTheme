@@ -1,0 +1,125 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Giriş";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <section>
+
+            <ul class="nav nav-tabs" id="loginTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="whiteCollar-tab" data-bs-toggle="tab" href="#whiteCollar" role="tab" aria-controls="whiteCollar" aria-selected="true">Beyaz Yaka Girişi</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="blueCollar-tab" data-bs-toggle="tab" href="#blueCollar" role="tab" aria-controls="blueCollar" aria-selected="false">Mavi Yaka Girişi</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="loginTabContent">
+                <div class="tab-pane fade show active" id="whiteCollar" role="tabpanel" aria-labelledby="whiteCollar-tab">                  
+
+                    <form id="whiteCollar-account" method="post">
+                        <br />
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                            <label asp-for="Input.Email" class="form-label">Email</label>
+                            @*<span asp-validation-for="Input.Email" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                            <label asp-for="Input.Password" class="form-label">Password</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                        <br />
+                        <div>
+                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Giriş</button>
+                        </div>
+
+                        <br />
+
+                        <div>
+                            <p>
+                                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                            </p>
+                            <p>
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                            </p>
+                            <p>
+                                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="tab-pane fade" id="blueCollar" role="tabpanel" aria-labelledby="blueCollar-tab">
+                    <form id="blueCollar-account" method="post">
+                        <br />
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="off" aria-required="true" placeholder="Sicil Numarası" />
+                            <label asp-for="Input.Email" class="form-label">Sicil Numarası</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Password" class="form-control" type="date" aria-required="true" />
+                            <label asp-for="Input.Password" class="form-label">Doğum Tarihi</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div>
+                            <button id="login-submit-blue-collar" type="submit" class="w-100 btn btn-lg btn-primary">Giriş</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2" hidden="hidden">
+        <section>
+            <h3>Use another service to log in.</h3>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                article
+                                about setting up this ASP.NET application to support logging in via external services
+                            </a>.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

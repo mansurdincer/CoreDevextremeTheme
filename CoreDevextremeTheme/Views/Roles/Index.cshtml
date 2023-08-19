@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"] = "Yetkilendirme";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success rounded-1">
+        <i class="fas fa-plus-circle"></i> Yeni Kayıt
+    </a>
+</p>
+
+<table class="table table-striped table-hover table-bordered display responsive nowrap" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Users</th>
+            <th style="width:8%">İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td i-role="@role.Id"></td>
+
+                <td>
+                    <div class="d-flex justify-content-start">
+                        <a asp-action="Update" asp-route-id="@role.Id" class="btn btn-outline-warning rounded-1 mr-2">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form asp-action="Delete" asp-route-id="@role.Id" method="post" onsubmit="return confirm('Bu rolü silmek istediğinizden emin misiniz?');">
+                            <button type="submit" class="btn btn-outline-danger rounded-1">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+
+
+            </tr>
+        }
+    <tbody>
+
+</table>

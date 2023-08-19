@@ -1,0 +1,47 @@
+﻿INSERT INTO CoreDevextremeTheme.dbo.Employees (Id, Sequence, RegistrationNumber, Name, Surname, DateOfJoin, DateOfResign, Active, JobTitleId, DepartmentId, CreatedById, CreatedAt, IsDeleted)
+
+SELECT NEWID(), 0, [TXTSICILNO], 
+
+
+SUBSTRING([TXTADISOYADI], 1, CHARINDEX(' ', [TXTADISOYADI]) - 1) AS Firstname,     
+       SUBSTRING([TXTADISOYADI],
+                 CHARINDEX(' ', [TXTADISOYADI]) + 1,
+                 LEN([TXTADISOYADI]) - CHARINDEX(' ', [TXTADISOYADI])) AS Lastname,
+
+
+DATEISEGIRISTARIH, DATEISTENCIKISTARIH, INTPERSONELMI , 
+(select Id from CoreDevextremeTheme.dbo.JobTitles WHERE name  = 'Mavi Yaka'), 
+(select Id from CoreDevextremeTheme.dbo.Departments WHERE name = 'Sales'), 
+'00000000-0000-0000-0000-000000000000',  GETDATE(), 0
+
+FROM [PUANTOR2023].[dbo].[TBLPERSONELSICIL] 
+
+WHERE [TXTSICILNO] not in (select RegistrationNumber FROM CoreDevextremeTheme.dbo.Employees)
+
+ORDER BY TXTSICILNO
+
+
+UPDATE	W 
+SET		W.DateOfResign = CASE WHEN P.DATEISTENCIKISTARIH = '1900-01-01' THEN NULL ELSE P.DATEISTENCIKISTARIH END
+FROM	[PUANTOR2023].[dbo].[TBLPERSONELSICIL]	P
+JOIN	[CoreDevextremeTheme].[dbo].[Employees]			W ON W.RegistrationNumber = P.TXTSICILNO
+WHERE	W.DateOfResign <> P.DATEISTENCIKISTARIH
+
+
+select * from CoreDevextremeTheme.dbo.Employees ORDER BY DateOfResign DESC
+
+
+
+
+INSERT INTO CoreDevextremeTheme.dbo.InventoryItems (Id, Code, Name, UnitId, InventoryCategoryId, Sequence, CreatedById, CreatedAt, IsDeleted)
+
+SELECT NEWID(), STOK_KODU, STOK_ADI, 1, 'EECDA442-1D10-4883-9E58-70ACFA92BC7F', 0, '00000000-0000-0000-0000-000000000000', GETDATE(), 0
+FROM FILIDEA.dbo.TBLSTSABIT S
+WHERE STOK_KODU LIKE 'P%'
+AND NOT EXISTS (
+    SELECT * 
+    FROM CoreDevextremeTheme.dbo.InventoryItems 
+    WHERE Code COLLATE SQL_Latin1_General_CP1_CI_AS = S.STOK_KODU COLLATE SQL_Latin1_General_CP1_CI_AS
+)
+
+

@@ -1,0 +1,11 @@
+﻿@using CoreDevextremeTheme.Reports
+
+@{
+    Layout = "~/Views/Shared/_PrintLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+<script src="~/js/viewer.part.bundle.js"></script>
+
+
+@Html.DevExpress().WebDocumentViewer().Height("1000px").Bind(new TestReport())

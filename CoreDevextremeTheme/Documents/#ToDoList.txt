@@ -1,0 +1,18 @@
+﻿Yapısal işler
+
++1 MaintenanceFormsController'da post edit action result'ında if (ModelState.IsValid) kontrolü çalışmıyor.
+2 Entity state Tracking ile ilgili çalışılacak
+3 Transient, Singleton ve Scoped arasındaki farklar hakkında araştırma yapılacak
+4 Menu generic hale gelecek, yetkilendirme üzerine çalışılacak
+
+22.03.2023 toplantısı
+
++1 Equipment tablosuna son bakım saati sütunu eklenecek.
+2 MaintenanceFormsItem için dokuman ekleme özelliği eklenecek.
++3 MaintenanceDepartmentId kaldırılacak
+4 Periodicity için çoktan seçim yapılacak
++5 ek tasklar istenirse eklenecek
++6 bakımda çalışan personel task bazında değil genel olarak eklenecek
+
+
+1 içeriği olmayan bakımların tamamlanmasını engelleyecek kontrol eklenecek
